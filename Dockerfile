@@ -2,19 +2,20 @@ FROM alpine
 
 USER root
 
-RUN apk update && \
-    apk add git curl ca-certificates bash jq
+RUN apk add  --no-cache git curl ca-certificates bash jq python
 
 
 ARG kube_version=1.7.7
+ARG kops_version=1.7.0
 ARG helm_version=2.6.1
+
 
 # Install kubectl
 RUN curl -s -L https://storage.googleapis.com/kubernetes-release/release/v${kube_version}/bin/linux/amd64/kubectl > /usr/local/bin/kubectl && \
     chmod +x /usr/local/bin/kubectl
 
 # Install kops
-RUN curl -s -L https://github.com/kubernetes/kops/releases/download/${kube_version}/kops-linux-amd64 >  /usr/local/bin/kops && \
+RUN curl -s -L https://github.com/kubernetes/kops/releases/download/${kops_version}/kops-linux-amd64 >  /usr/local/bin/kops && \
     chmod +x /usr/local/bin/kops
 
 # Install helm
@@ -27,7 +28,6 @@ RUN curl -s -L https://kubernetes-helm.storage.googleapis.com/helm-v${helm_versi
 RUN helm plugin install https://github.com/technosophos/helm-template
 
 # Install aws-cli
-RUN apk add python && \
-    curl -s -L https://bootstrap.pypa.io/get-pip.py > get-pip.py && \
+RUN curl -s -L https://bootstrap.pypa.io/get-pip.py > get-pip.py && \
     python get-pip.py && \
     pip install awscli
