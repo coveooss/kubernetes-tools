@@ -5,8 +5,8 @@ USER root
 RUN apk add  --no-cache git curl ca-certificates bash jq python
 
 
-ARG kube_version=1.8.8
-ARG kops_version=1.8.1
+ARG kube_version=1.9.7
+ARG kops_version=1.9.0
 ARG helm_version=2.8.1
 
 
