@@ -5,9 +5,9 @@ USER root
 RUN apk add  --no-cache git curl ca-certificates bash jq python
 
 
-ARG kube_version=1.9.7
-ARG kops_version=1.9.0
-ARG helm_version=2.8.1
+ARG kube_version=1.9.8
+ARG kops_version=1.9.1
+ARG helm_version=2.9.1
 
 
 # Install kubectl
@@ -30,4 +30,4 @@ RUN helm plugin install https://github.com/technosophos/helm-template
 # Install aws-cli
 RUN curl -s -L https://bootstrap.pypa.io/get-pip.py > get-pip.py && \
     python get-pip.py && \
-    pip install awscli
+    pip install awscli aws-sudo
