@@ -2,11 +2,11 @@ FROM alpine
 
 USER root
 
-RUN apk add  --no-cache git curl ca-certificates bash jq python
+RUN apk add  --no-cache git curl ca-certificates bash jq python python3
 
 
-ARG kube_version=1.10.11
-ARG kops_version=1.10.0
+ARG kube_version=1.11.10
+ARG kops_version=1.11.1
 ARG helm_version=2.9.1
 
 
