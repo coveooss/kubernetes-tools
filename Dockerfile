@@ -1,6 +1,6 @@
 FROM alpine
 
-USER root
+
 
 RUN apk add  --no-cache git curl ca-certificates bash jq python python3
 
@@ -31,3 +31,6 @@ RUN helm plugin install https://github.com/technosophos/helm-template
 RUN curl -s -L https://bootstrap.pypa.io/get-pip.py > get-pip.py && \
   python get-pip.py && \
   pip install awscli aws-sudo
+
+RUN addgroup -S -g 1001 jenkins && adduser -u 1001 -D -S jenkins
+USER jenkins
