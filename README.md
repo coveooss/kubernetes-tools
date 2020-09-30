@@ -7,7 +7,7 @@ This image contain all tool we need to deploy in kubernetes:
 
 # Versionning
 
-The version of the image are the same as kubertnetes.
+The version of the image are the same as kubernetes.
 
 # Development 
 
