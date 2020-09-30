@@ -1,8 +1,8 @@
-FROM alpine
+FROM python:3.8-alpine
 
-
-
-RUN apk add  --no-cache git curl ca-certificates bash jq python python3
+# Install dep & upgrade pip
+RUN apk add --no-cache git curl ca-certificates bash jq build-base && \
+  pip install -U pip
 
 
 ARG kube_version=1.11.10
@@ -28,9 +28,7 @@ RUN curl -s -L https://kubernetes-helm.storage.googleapis.com/helm-v${helm_versi
 RUN helm plugin install https://github.com/technosophos/helm-template
 
 # Install aws-cli
-RUN curl -s -L https://bootstrap.pypa.io/get-pip.py > get-pip.py && \
-  python get-pip.py && \
-  pip install awscli aws-sudo
+RUN pip install awscli aws-sudo
 
 RUN addgroup -S -g 1001 jenkins && adduser -u 1001 -D -S jenkins
 USER jenkins
