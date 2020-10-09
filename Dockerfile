@@ -5,8 +5,8 @@ RUN apk add --no-cache git curl ca-certificates bash jq build-base && \
   pip install -U pip
 
 
-ARG kube_version=1.11.10
-ARG kops_version=1.11.1
+ARG kube_version=1.12.9
+ARG kops_version=1.12.2
 ARG helm_version=2.9.1
 
 
